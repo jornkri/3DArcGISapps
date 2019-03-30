@@ -48,9 +48,6 @@
                 var view = new SceneView({
                     container: "viewDiv",
                     map: map,
-                    scale: 50000000, // Sets the initial scale to 1:50,000,000
-                    center: [20, 50], // Sets the center point of view with lon/lat
-                    spatialReference: 25833,
                     alphaCompositingEnabled: true,
                     environment: {
                         background: {
@@ -61,9 +58,17 @@
                         starsEnabled: false,
                         //disable atmosphere
                         atmosphereEnabled: true
+                    },
+                    center: {
+                        x: 256924.68078,
+                        y: 6605196.9098,
+                        z: 5000,
+                        spatialReference: 25833
                     }
 
                 });
+
+
 
             });
     </script>
