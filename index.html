@@ -17,6 +17,25 @@
             width: 100%;
         }
     </style>
+    <script>
+        require(["esri/Map", "esri/views/SceneView"],
+            function(Map, SceneView) {
+                // Code to create the map and view will go here
+            });
+
+        var map = new Map({
+            basemap: "streets",
+            ground: "world-elevation"
+        });
+        var view = new SceneView({
+            container: "viewDiv", // Reference to the DOM node that will contain the view
+            map: map // References the map object created in step 3
+        });
+    </script>
+
+
+
+
 </head>
 
 
