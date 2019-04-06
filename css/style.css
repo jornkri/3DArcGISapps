@@ -7,17 +7,72 @@ body,
     width: 100%;
 }
 
-#sketchPanel {
+#paneDiv {
     padding: 10px;
+    max-width: 200px;
     background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1em;
+  }
+
+  #credits {
+    font-size: 0.7em;
+    line-height: 1.1em;
+  }
+
+#sketchPanel {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
 }
 
 .esri-button {
-    margin: 2px;
+    align-items: center;
+    background-color: #80A0C3 !important;
+    border: 1px solid rgb(66, 27, 27) !important;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: 14px;
+    height: 32px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 25%;
+}
+
+.esri-button--secondary {
+    background-color: transparent;
+    color: #d269de;
 }
 
 
-/* Icon 1 */
+/* NavBar */
+
+.navbar {
+    position: absolute;
+    left: 70px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+}
+
+
+.navbar-dark .navbar-brand {
+    color: #BE5D66;
+}
+
+.red.lighten-1 {
+    background-color: #EBCB8B9c!important;
+}
 
 .animated-icon1,
 .animated-icon2,
@@ -58,15 +113,15 @@ body,
 }
 
 .animated-icon1 span {
-    background: #e65100;
+    background: #BE5D66;
 }
 
 .animated-icon2 span {
-    background: #e3f2fd;
+    background: #BE5D66;
 }
 
 .animated-icon3 span {
-    background: #f3e5f5;
+    background: #BE5D66;
 }
 
 .animated-icon1 span:nth-child(1) {
@@ -192,4 +247,31 @@ body,
     transform: rotate(-45deg);
     top: 21px;
     left: 8px;
+}
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #6c757d;
+    -webkit-transition: .35s;
+    -o-transition: .35s;
+    transition: .35s;
+}
+
+
+/* Cards */
+
+.card {
+    position: relative;
+    width: 200px;
+    right: initial;
+    margin: auto;
+    border: 3px solid #73AD21;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }

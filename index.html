@@ -25,20 +25,17 @@
     <link href="css/style.css" rel="stylesheet">
 
 
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $('body').bootstrapMaterialDesign();
         });
-    </script>
+    </script> -->
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.11/"></script>
-
-
 
 </head>
 
@@ -49,6 +46,7 @@
 
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#">3D + GIS = <3</a>
+
 
         <!-- Collapse button -->
         <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,239 +59,361 @@
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" align="center" href="#">Nyheter i JS-API 4.11<span class="sr-only">(current) </span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
+                <!-- Card -->
+                <div class="card">
+
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/sketch-3d.gif" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title"><a>Sketch i 3D</a></h4>
+                        <!-- Text -->
+                        <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
+                        <!-- Button -->
+                        <div id="sketchPanel" class="esri-widget">
+                            <button type="button" id="extrudedPolygon" data-type="polygon" class="esri-button">
+                            Tegn et bygg
+                            </button>
+                            <button id="point" data-type="point" class="esri-button">
+                            Tegn et punkt
+                            </button>
+                            <button id="line" data-type="polyline" class="esri-button">
+                            Tegn en rute
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="card">
+
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/sketch-3d.gif" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title"><a>Sketch i 3D</a></h4>
+                        <!-- Text -->
+                        <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
+                        <!-- Button -->
+                        <div id="sketchPanel" class="esri-widget">
+                            <button type="button" id="extrudedPolygon" data-type="polygon" class="esri-button">
+                            Tegn et bygg
+                            </button>
+                            <button id="point" data-type="point" class="esri-button">
+                            Tegn et punkt
+                            </button>
+                            <button id="line" data-type="polyline" class="esri-button">
+                            Tegn en rute
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- Card -->
+
+
             </ul>
+
+
             <!-- Links -->
 
-        </div>
-        <!-- Collapsible content -->
 
+
+            <!-- Collapsible content -->
     </nav>
     <!--/.Navbar-->
 
-
-
-
+    <div id="paneDiv" class="esri-widget">
+      <p>Select a symbol and place it in the scene:</p>
+      <button id="tent" class="esri-button">Tent</button><br />
+      <button id="canoe" class="esri-button">Canoe</button>
+      <p id="credits">
+        Tent and canoe glTF models from
+        <a href="https://www.kenney.nl/assets/" target="_blank"
+          >Kenney game assets</a
+        >
+        under
+        <a
+          href="https://creativecommons.org/publicdomain/zero/1.0/"
+          target="_blank"
+          >CC0 1.0 Universal</a
+        >.
 
     <div id="viewDiv"></div>
 
+    <script>
+        require(["esri/Map",
+                "esri/views/SceneView",
+                "esri/Basemap",
+                "esri/layers/ElevationLayer",
+                "esri/layers/GraphicsLayer",
+                "esri/widgets/Sketch/SketchViewModel",
+                "esri/symbols/WebStyleSymbol"
+            ],
+            function(Map, SceneView, Basemap, ElevationLayer, GraphicsLayer, SketchViewModel, WebStyleSymbol) {
+                var basemap = new Basemap({
+                    portalItem: {
+                        id: "a1f189886ef54c5b8e03e37695e8925d" // gråtone
+                    }
+                });
 
-    <div id="sketchPanel" class="esri-widget">
-        <button id="extrudedPolygon" data-type="polygon" class="esri-button">
-    Draw a building
-    </button>
-        <button id="point" data-type="point" class="esri-button">
-    Draw a point of interest
-    </button>
-        <button id="line" data-type="polyline" class="esri-button">
-    Draw a route
-    </button>
+                var elevLyr = new ElevationLayer({
+                    portalItem: {
+                        id: "4526a4d94b844467a3ce130da8ca172d"
+                    }
+                });
 
+                const gLayer = new GraphicsLayer();
 
-        <script>
-            require(["esri/Map",
-                    "esri/views/SceneView",
-                    "esri/Basemap",
-                    "esri/layers/ElevationLayer",
-                    "esri/layers/GraphicsLayer",
-                    "esri/widgets/Sketch/SketchViewModel",
-                    "esri/symbols/WebStyleSymbol"
-                ],
-                function(Map, SceneView, Basemap, ElevationLayer, GraphicsLayer, SketchViewModel, WebStyleSymbol) {
-                    var basemap = new Basemap({
-                        portalItem: {
-                            id: "a1f189886ef54c5b8e03e37695e8925d" // gråtone
-                        }
-                    });
+                var map = new Map({
+                    basemap: basemap,
+                    ground: "world-elevation",
+                    layers: [gLayer],
+                    ground: {
+                        surfaceColor: "#FCFCFC"
+                    }
+                });
+                map.ground.layers.add(elevLyr);
 
-                    var elevLyr = new ElevationLayer({
-                        portalItem: {
-                            id: "4526a4d94b844467a3ce130da8ca172d"
-                        }
-                    });
-
-                    const gLayer = new GraphicsLayer();
-
-                    var map = new Map({
-                        basemap: basemap,
-                        ground: "world-elevation",
-                        layers: [gLayer],
-                        ground: {
-                            surfaceColor: "#FCFCFC"
-                        }
-                    });
-                    map.ground.layers.add(elevLyr);
-
-                    var view = new SceneView({
-                        container: "viewDiv",
-                        map: map,
-                        alphaCompositingEnabled: true,
-                        environment: {
-                            background: {
-                                type: "color", // autocasts as new ColorBackground()
-                                color: "#FCFCFC"
-                            },
-                            // disable stars
-                            starsEnabled: false,
-                            //disable atmosphere
-                            atmosphereEnabled: true
+                var view = new SceneView({
+                    container: "viewDiv",
+                    map: map,
+                    alphaCompositingEnabled: true,
+                    environment: {
+                        background: {
+                            type: "color", // autocasts as new ColorBackground()
+                            color: "#FCFCFC"
                         },
-                        center: {
-                            x: 256924.68078,
-                            y: 6605196.9098,
-                            z: 5000,
-                            spatialReference: 25833
-                        }
-
-                    });
-
-                    //------------------Sketch i 3D------------------------------------------------------
-
-                    const blue = [82, 82, 122, 0.9];
-                    const white = [255, 255, 255, 0.8];
-
-                    // polygon symbol used for sketching the extruded building footprints
-                    const extrudedPolygon = {
-                        type: "polygon-3d",
-                        symbolLayers: [{
-                            type: "extrude",
-                            size: 10, // extrude by 10 meters
-                            material: {
-                                color: white
-                            },
-                            edges: {
-                                type: "solid",
-                                size: "3px",
-                                color: blue
-                            }
-                        }]
-                    };
-
-                    // polyline symbol used for sketching routes
-                    const route = {
-                        type: "line-3d",
-                        symbolLayers: [{
-                            type: "line",
-                            size: "3px",
-                            material: {
-                                color: blue
-                            }
-                        }, {
-                            type: "line",
-                            size: "10px",
-                            material: {
-                                color: white
-                            }
-                        }]
-                    };
-
-                    // point symbol used for sketching points of interest
-                    const point = {
-                        type: "point-3d",
-                        symbolLayers: [{
-                            type: "icon",
-                            size: "20px",
-                            resource: {
-                                primitive: "kite"
-                            },
-                            outline: {
-                                color: blue,
-                                size: "3px"
-                            },
-                            material: {
-                                color: white
-                            }
-                        }]
-                    };
-
-                    // define the SketchViewModel and pass in the symbols for each geometry type
-                    const sketchVM = new SketchViewModel({
-                        layer: gLayer,
-                        view: view,
-                        pointSymbol: point,
-                        polygonSymbol: extrudedPolygon,
-                        polylineSymbol: route
-                    });
-
-                    // add an event listener for the Delete key to delete
-                    // the graphics that are currently being updated
-                    view.on("key-up", function(evt) {
-                        if (evt.key === "Delete") {
-                            gLayer.removeMany(sketchVM.updateGraphics);
-                            sketchVM.reset();
-                        }
-                    });
-
-                    // after drawing the geometry, enter the update mode to update the geometry
-                    // and the deactivate the buttons
-                    sketchVM.on("create", function(event) {
-                        if (event.state === "complete") {
-                            sketchVM.update(event.graphic);
-                            deactivateButtons();
-                        }
-                    });
-
-                    const drawButtons = Array.prototype.slice.call(
-                        document.getElementsByClassName("esri-button")
-                    );
-
-                    // set event listeners to activate sketching graphics
-                    drawButtons.forEach(function(btn) {
-                        btn.addEventListener("click", function(event) {
-                            deactivateButtons();
-                            event.target.classList.add("esri-button--secondary");
-                            // to activate sketching the create method is called passing in the geometry type
-                            // from the data-type attribute of the html element
-                            sketchVM.create(event.target.getAttribute("data-type"));
-                        });
-                    });
-
-                    function deactivateButtons() {
-                        drawButtons.forEach(function(element) {
-                            element.classList.remove("esri-button--secondary");
-                        });
+                        // disable stars
+                        starsEnabled: false,
+                        //disable atmosphere
+                        atmosphereEnabled: true
+                    },
+                    center: {
+                        x: 256924.68078,
+                        y: 6605196.9098,
+                        z: 5000,
+                        spatialReference: 25833
                     }
 
-                    //view.ui.add("sketchPanel", "top-right");
-
-
                 });
-        </script>
 
-        <!-- SCRIPTS -->
-        <!-- JQuery -->
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+                //------------------Sketch i 3D------------------------------------------------------
 
-        <script>
-            $(document).ready(function() {
+                const blue = [82, 82, 122, 0.9];
+                const white = [255, 255, 255, 0.8];
 
-                $('.first-button').on('click', function() {
+                // polygon symbol used for sketching the extruded building footprints
+                const extrudedPolygon = {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 10, // extrude by 10 meters
+                        material: {
+                            color: white
+                        },
+                        edges: {
+                            type: "solid",
+                            size: "3px",
+                            color: blue
+                        }
+                    }]
+                };
 
-                    $('.animated-icon1').toggleClass('open');
+                // polyline symbol used for sketching routes
+                const route = {
+                    type: "line-3d",
+                    symbolLayers: [{
+                        type: "line",
+                        size: "3px",
+                        material: {
+                            color: blue
+                        }
+                    }, {
+                        type: "line",
+                        size: "10px",
+                        material: {
+                            color: white
+                        }
+                    }]
+                };
+
+                // point symbol used for sketching points of interest
+                const point = {
+                    type: "point-3d",
+                    symbolLayers: [{
+                        type: "icon",
+                        size: "20px",
+                        resource: {
+                            primitive: "kite"
+                        },
+                        outline: {
+                            color: blue,
+                            size: "3px"
+                        },
+                        material: {
+                            color: white
+                        }
+                    }]
+                };
+
+                // define the SketchViewModel and pass in the symbols for each geometry type
+                const sketchVM = new SketchViewModel({
+                    layer: gLayer,
+                    view: view,
+                    pointSymbol: point,
+                    polygonSymbol: extrudedPolygon,
+                    polylineSymbol: route
                 });
-                $('.second-button').on('click', function() {
 
-                    $('.animated-icon2').toggleClass('open');
+                // add an event listener for the Delete key to delete
+                // the graphics that are currently being updated
+                view.on("key-up", function(evt) {
+                    if (evt.key === "Delete") {
+                        gLayer.removeMany(sketchVM.updateGraphics);
+                        sketchVM.reset();
+                    }
                 });
-                $('.third-button').on('click', function() {
 
-                    $('.animated-icon3').toggleClass('open');
+                // after drawing the geometry, enter the update mode to update the geometry
+                // and the deactivate the buttons
+                sketchVM.on("create", function(event) {
+                    if (event.state === "complete") {
+                        sketchVM.update(event.graphic);
+                        deactivateButtons();
+                    }
                 });
+
+                const drawButtons = Array.prototype.slice.call(
+                    document.getElementsByClassName("esri-button")
+                );
+
+                // set event listeners to activate sketching graphics
+                drawButtons.forEach(function(btn) {
+                    btn.addEventListener("click", function(event) {
+                        deactivateButtons();
+                        event.target.classList.add("esri-button--secondary");
+                        // to activate sketching the create method is called passing in the geometry type
+                        // from the data-type attribute of the html element
+                        sketchVM.create(event.target.getAttribute("data-type"));
+                    });
+                });
+
+                function deactivateButtons() {
+                    drawButtons.forEach(function(element) {
+                        element.classList.remove("esri-button--secondary");
+                    });
+                }
+
+                //view.ui.add("sketchPanel", "top-right");
+
+//---------------------Plassere 3dObjekter-----------------------------------------------------------
+                const graphicsLayer2 = new GraphicsLayer();
+                        view.map.add(graphicsLayer2);
+
+                        const tentBtn = document.getElementById("tent");
+                        const canoeBtn = document.getElementById("canoe");
+
+                        view
+                        .when(function() {
+                            // This sample uses the SketchViewModel to add points to a
+                            // GraphicsLayer. The points have 3D glTF models as symbols.
+                            const sketchVM = new SketchViewModel({
+                            layer: graphicsLayer2,
+                            view: view
+                            });
+
+                            tentBtn.addEventListener("click", function() {
+                            // reference the relative path to the glTF model
+                            // in the resource of an ObjectSymbol3DLayer
+                            sketchVM.pointSymbol = {
+                                type: "point-3d",
+                                symbolLayers: [
+                                {
+                                    type: "object",
+                                    resource: {
+                                    href:
+                                        "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/tent.glb"
+                                    }
+                                }
+                                ]
+                            };
+                            sketchVM.create("point");
+                            deactivateButtons();
+                            this.classList.add("esri-button--secondary");
+                            });
+
+                            canoeBtn.addEventListener("click", function() {
+                            // reference the relative path to the glTF model
+                            // in the resource of an ObjectSymbol3DLayer
+                            sketchVM.pointSymbol = {
+                                type: "point-3d",
+                                symbolLayers: [
+                                {
+                                    type: "object",
+                                    resource: {
+                                    href:
+                                        "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/canoe.glb"
+                                    }
+                                }
+                                ]
+                            };
+                            deactivateButtons();
+                            sketchVM.create("point");
+                            this.classList.add("esri-button--secondary");
+                            });
+
+                            sketchVM.on("create", function(event) {
+                            if (event.state === "complete") {
+                                sketchVM.update(event.graphic);
+                                deactivateButtons();
+                            }
+                            });
+                        })
+                        .catch(console.error);
+
+                        function deactivateButtons() {
+                        const elements = Array.prototype.slice.call(
+                            document.getElementsByClassName("esri-button")
+                        );
+                        elements.forEach(function(element) {
+                            element.classList.remove("esri-button--secondary");
+                        });
+                        }
+
+                        //view.ui.add("paneDiv", "top-right");
+
             });
-        </script>
+    </script>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('.first-button').on('click', function() {
+
+                $('.animated-icon1').toggleClass('open');
+            });
+            $('.second-button').on('click', function() {
+
+                $('.animated-icon2').toggleClass('open');
+            });
+            $('.third-button').on('click', function() {
+
+                $('.animated-icon3').toggleClass('open');
+            });
+        });
+    </script>
 
 </body>
 
