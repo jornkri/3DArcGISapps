@@ -57,10 +57,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent23">
 
             <!-- Links -->
+            <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" align="center" href="#">Nyheter i JS-API 4.11<span class="sr-only">(current) </span></a>
-                </li>
+                
                 <!-- Card -->
                 <div class="card">
 
@@ -71,7 +70,7 @@
                     <div class="card-body">
 
                         <!-- Title -->
-                        <h4 class="card-title"><a>Sketch i 3D</a></h4>
+                        <h4 class="card-title" align="center"><a>Sketch i 3D</a></h4>
                         <!-- Text -->
                         <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
                         <!-- Button -->
@@ -93,28 +92,19 @@
                 <div class="card">
 
                     <!-- Card image -->
-                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/sketch-3d.gif" alt="Card image cap">
+                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/import-gltf.gif" alt="Card image cap">
 
                     <!-- Card content -->
                     <div class="card-body">
 
                         <!-- Title -->
-                        <h4 class="card-title"><a>Sketch i 3D</a></h4>
+                        <h4 class="card-title" align="center"><a>3Dmodeller i webscenen</a></h4>
                         <!-- Text -->
                         <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
                         <!-- Button -->
-                        <div id="sketchPanel" class="esri-widget">
-                            <button type="button" id="extrudedPolygon" data-type="polygon" class="esri-button">
-                            Tegn et bygg
-                            </button>
-                            <button id="point" data-type="point" class="esri-button">
-                            Tegn et punkt
-                            </button>
-                            <button id="line" data-type="polyline" class="esri-button">
-                            Tegn en rute
-                            </button>
-                        </div>
-
+                        <div id="paneDiv" class="esri-widget">
+                        <button id="tent" class="esri-button">Telt</button><br />
+                        <button id="canoe" class="esri-button">Kano</button>
                     </div>
 
                 </div>
@@ -132,21 +122,7 @@
     </nav>
     <!--/.Navbar-->
 
-    <div id="paneDiv" class="esri-widget">
-      <p>Select a symbol and place it in the scene:</p>
-      <button id="tent" class="esri-button">Tent</button><br />
-      <button id="canoe" class="esri-button">Canoe</button>
-      <p id="credits">
-        Tent and canoe glTF models from
-        <a href="https://www.kenney.nl/assets/" target="_blank"
-          >Kenney game assets</a
-        >
-        under
-        <a
-          href="https://creativecommons.org/publicdomain/zero/1.0/"
-          target="_blank"
-          >CC0 1.0 Universal</a
-        >.
+    
 
     <div id="viewDiv"></div>
 
@@ -327,7 +303,7 @@
                         .when(function() {
                             // This sample uses the SketchViewModel to add points to a
                             // GraphicsLayer. The points have 3D glTF models as symbols.
-                            const sketchVM = new SketchViewModel({
+                            const sketchVMmodell = new SketchViewModel({
                             layer: graphicsLayer2,
                             view: view
                             });
@@ -335,7 +311,7 @@
                             tentBtn.addEventListener("click", function() {
                             // reference the relative path to the glTF model
                             // in the resource of an ObjectSymbol3DLayer
-                            sketchVM.pointSymbol = {
+                            sketchVMmodell.pointSymbol = {
                                 type: "point-3d",
                                 symbolLayers: [
                                 {
@@ -347,7 +323,7 @@
                                 }
                                 ]
                             };
-                            sketchVM.create("point");
+                            sketchVMmodell.create("point");
                             deactivateButtons();
                             this.classList.add("esri-button--secondary");
                             });
@@ -355,7 +331,7 @@
                             canoeBtn.addEventListener("click", function() {
                             // reference the relative path to the glTF model
                             // in the resource of an ObjectSymbol3DLayer
-                            sketchVM.pointSymbol = {
+                            sketchVMmodell.pointSymbol = {
                                 type: "point-3d",
                                 symbolLayers: [
                                 {
@@ -368,13 +344,13 @@
                                 ]
                             };
                             deactivateButtons();
-                            sketchVM.create("point");
+                            sketchVMmodell.create("point");
                             this.classList.add("esri-button--secondary");
                             });
 
-                            sketchVM.on("create", function(event) {
+                            sketchVMmodell.on("create", function(event) {
                             if (event.state === "complete") {
-                                sketchVM.update(event.graphic);
+                                sketchVMmodell.update(event.graphic);
                                 deactivateButtons();
                             }
                             });
