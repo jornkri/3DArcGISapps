@@ -356,16 +356,28 @@ table.esri-widget {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: rgb(236, 3, 3);
+  background-color: rgba(110, 110, 110, 0.521);
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 
-.card-img-top_TBA {
+.card-img-top_TAB {
   width: 100%;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+  vertical-align: middle;
+  border-style: none;
+}
+
+.overlay {
+    position: absolute;
+    color: #f90707;
+    font-size: 2rem;
+    font-weight: 900;
+    transform: rotate(55deg) !important;
+    top: 55%;
+    left: 20%;
+    text-align: center;
+    transform: translate(-50%, -50%);
 }
