@@ -73,17 +73,26 @@ table.esri-widget {
 }
 
 .custom-control-label {
-  position: relative;
-  margin-bottom: 0;
-  vertical-align: top;
-  color: aliceblue;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: #fff;
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #007bff;
+  border-color: #be5d65;
   background-color: #ffffff63;
 }
+
+.custom-file-control,
+.form-control,
+input::placeholder,
+label {
+  line-height: 25px !important;
+}
+
 /* NavBar */
 
 .navbar {
@@ -371,13 +380,13 @@ table.esri-widget {
 }
 
 .overlay {
-    position: absolute;
-    color: #f90707;
-    font-size: 2rem;
-    font-weight: 900;
-    transform: rotate(55deg) !important;
-    top: 55%;
-    left: 20%;
-    text-align: center;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  color: #f90707;
+  font-size: 2rem;
+  font-weight: 900;
+  transform: rotate(55deg) !important;
+  top: 55%;
+  left: 20%;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
