@@ -11,7 +11,9 @@
     <!-- Material Design for Bootstrap fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <!-- Material Design for Bootstrap CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
 
@@ -25,9 +27,15 @@
     <link href="css/style.css" rel="stylesheet">
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
     <!-- <script>
         $(document).ready(function() {
             $('body').bootstrapMaterialDesign();
@@ -45,145 +53,150 @@
     <nav class="navbar navbar-dark red lighten-1 mb-4">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="#">3D + GIS = <3</a>
+        <a class="navbar-brand" href="#">3D + GIS = <3</a> <!-- Collapse button -->
+                <button class="navbar-toggler second-button" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent23">
+
+                    <!-- Links -->
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
 
 
-        <!-- Collapse button -->
-        <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
-    </button>
+                        <!-- Card -->
+                        <div class="card">
 
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent23">
+                            <!-- Card image -->
+                            <img class="card-img-top"
+                                src="https://developers.arcgis.com/javascript/assets/img/samples/sketch-3d.gif"
+                                alt="Card image cap">
 
-            <!-- Links -->
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                
-                <!-- Card -->
-                <div class="card">
+                            <!-- Card content -->
+                            <div class="card-body">
 
-                    <!-- Card image -->
-                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/sketch-3d.gif" alt="Card image cap">
-
-                    <!-- Card content -->
-                    <div class="card-body">
-
-                        <!-- Title -->
-                        <h4 class="card-title" align="center"><a>Sketch i 3D</a></h4>
-                        <!-- Text -->
-                        <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
-                        <!-- Button -->
-                        <div id="sketchPanel" class="esri-widget">
-                            <button type="button" id="extrudedPolygon" data-type="polygon" class="esri-button">
-                            Tegn et bygg
-                            </button>
-                            <button id="point" data-type="point" class="esri-button">
-                            Tegn et punkt
-                            </button>
-                            <button id="line" data-type="polyline" class="esri-button">
-                            Tegn en rute
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="card">
-
-                    <!-- Card image -->
-                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/samples/import-gltf.gif" alt="Card image cap">
-
-                    <!-- Card content -->
-                    <div class="card-body">
-
-                        <!-- Title -->
-                        <h4 class="card-title" align="center"><a>3Dmodeller i webscenen</a></h4>
-                        <!-- Text -->
-                        <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i 3dScenen </p>
-                        <!-- Button -->
-                        <div id="paneDiv" class="esri-widget">
-                        <button id="tent" class="esri-button">Telt</button>
-                        <button id="canoe" class="esri-button">Kano</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-
-                    <!-- Card image -->
-                    <img class="card-img-top" src="https://developers.arcgis.com/javascript/assets/img/guide/whats-new/411/hitTest.png" alt="Card image cap">
-
-                    <!-- Card content -->
-                    <div class="card-body">
-
-                            
                                 <!-- Title -->
-                                    <h4 class="card-title" align="center"><a>Hittest</a></h4>
-                                    <table
-                                        class="esri-widget"
-                                        style="color: white; background-color: rgba(0, 0, 0, 0);"
-                                    ><div id="hitInfo" class="esri-widget"></div>
-                                        <tr>
-                                        <td>Avstand:</td>
-                                        <td id="hitresultground">0 m</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Antall objekter truffet:</td>
-                                        <td id="hitresultcount">-</td>
-                                        </tr>
-                                    </table>
-                                
-                                    <br />
-                                    <button id="reset" class="esri-button">
-                                        Reset
+                                <h4 class="card-title" align="center"><a>Sketch i 3D</a></h4>
+                                <!-- Text -->
+                                <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i
+                                    3dScenen </p>
+                                <!-- Button -->
+                                <div id="sketchPanel" class="esri-widget">
+                                    <button type="button" id="extrudedPolygon" data-type="polygon" class="esri-button">
+                                        Tegn et bygg
+                                    </button>
+                                    <button id="point" data-type="point" class="esri-button">
+                                        Tegn et punkt
+                                    </button>
+                                    <button id="line" data-type="polyline" class="esri-button">
+                                        Tegn en rute
                                     </button>
                                 </div>
-                    </div>
-        
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+
+                            <!-- Card image -->
+                            <img class="card-img-top"
+                                src="https://developers.arcgis.com/javascript/assets/img/samples/import-gltf.gif"
+                                alt="Card image cap">
+
+                            <!-- Card content -->
+                            <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title" align="center"><a>3Dmodeller i webscenen</a></h4>
+                                <!-- Text -->
+                                <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i
+                                    3dScenen </p>
+                                <!-- Button -->
+                                <div id="paneDiv" class="esri-widget">
+                                    <button id="tent" class="esri-button">Telt</button>
+                                    <button id="canoe" class="esri-button">Kano</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+
+                            <!-- Card image -->
+                            <img class="card-img-top"
+                                src="https://developers.arcgis.com/javascript/assets/img/guide/whats-new/411/hitTest.png"
+                                alt="Card image cap">
+
+                            <!-- Card content -->
+                            <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title" align="center"><a>Hittest</a></h4>
+                                <table class="esri-widget" style="color: white; background-color: rgba(0, 0, 0, 0);">
+                                    <div id="hitInfo" class="esri-widget"></div>
+                                    <tr>
+                                        <!-- Text -->
+                                        <td>Avstand:</td>
+                                        <td id="hitresultground">0 m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Antall objekter truffet:</td>
+                                        <td id="hitresultcount">-</td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <!-- Button -->
+                                <button id="reset" class="esri-button">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
                 </div>
-                
+
                 <!-- Card -->
 
 
-            </ul>
+                </ul>
 
 
-            <!-- Links -->
+                <!-- Links -->
 
 
-            
 
-            <!-- Collapsible content -->
+
+                <!-- Collapsible content -->
     </nav>
     <!--/.Navbar-->
 
-    
-    
-    
+
+
+
 
     <div id="viewDiv">
 
-            <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                    <label class="custom-control-label" for="customSwitch1">Skru av/på bygninger</label>
-                  </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+            <label class="custom-control-label" for="customSwitch1">Skru av/på bygninger</label>
+        </div>
 
     </div>
 
     <script>
         require(["esri/Map",
-                "esri/views/SceneView",
-                "esri/Basemap",
-                "esri/layers/Layer",
-                "esri/layers/ElevationLayer",
-                "esri/layers/GraphicsLayer",
-                "esri/widgets/Sketch/SketchViewModel",
-                "esri/symbols/WebStyleSymbol",
-                "esri/Graphic"
-            ],
-            function(Map, SceneView, Basemap, Layer, ElevationLayer, GraphicsLayer, SketchViewModel, WebStyleSymbol, Graphic) {
+            "esri/views/SceneView",
+            "esri/Basemap",
+            "esri/layers/Layer",
+            "esri/layers/ElevationLayer",
+            "esri/layers/GraphicsLayer",
+            "esri/widgets/Sketch/SketchViewModel",
+            "esri/symbols/WebStyleSymbol",
+            "esri/Graphic"
+        ],
+            function (Map, SceneView, Basemap, Layer, ElevationLayer, GraphicsLayer, SketchViewModel, WebStyleSymbol, Graphic) {
                 var basemap = new Basemap({
                     portalItem: {
                         id: "ea53f092fa654ad08eb88067cd73c56a" // gråtone
@@ -233,18 +246,18 @@
 
                 Layer.fromPortalItem({
                     portalItem: {
-                      // Legg til bygg
-                      id: "c276701d43d441e380ac8b1bc146b95f"
+                        // Legg til bygg
+                        id: "c276701d43d441e380ac8b1bc146b95f"
                     }
-                  })
+                })
                     .then(addLayer)
                     .catch(rejection);
 
-                    // Adds the layer to the map once it loads
+                // Adds the layer to the map once it loads
                 function addLayer(layer) {
                     map.add(layer);
                 }
-        
+
                 function rejection(error) {
                     console.log("Layer failed to load: ", error);
                 }
@@ -319,7 +332,7 @@
 
                 // add an event listener for the Delete key to delete
                 // the graphics that are currently being updated
-                view.on("key-up", function(evt) {
+                view.on("key-up", function (evt) {
                     if (evt.key === "Delete") {
                         gLayer.removeMany(sketchVM.updateGraphics);
                         sketchVM.reset();
@@ -328,7 +341,7 @@
 
                 // after drawing the geometry, enter the update mode to update the geometry
                 // and the deactivate the buttons
-                sketchVM.on("create", function(event) {
+                sketchVM.on("create", function (event) {
                     if (event.state === "complete") {
                         sketchVM.update(event.graphic);
                         deactivateButtons();
@@ -340,8 +353,8 @@
                 );
 
                 // set event listeners to activate sketching graphics
-                drawButtons.forEach(function(btn) {
-                    btn.addEventListener("click", function(event) {
+                drawButtons.forEach(function (btn) {
+                    btn.addEventListener("click", function (event) {
                         deactivateButtons();
                         event.target.classList.add("esri-button--secondary");
                         // to activate sketching the create method is called passing in the geometry type
@@ -351,198 +364,198 @@
                 });
 
                 function deactivateButtons() {
-                    drawButtons.forEach(function(element) {
+                    drawButtons.forEach(function (element) {
                         element.classList.remove("esri-button--secondary");
                     });
                 }
 
                 //view.ui.add("sketchPanel", "top-right");
 
-//---------------------Plassere 3dObjekter-----------------------------------------------------------
+                //---------------------Plassere 3dObjekter-----------------------------------------------------------
                 const graphicsLayer2 = new GraphicsLayer();
-                        view.map.add(graphicsLayer2);
+                view.map.add(graphicsLayer2);
 
-                        const tentBtn = document.getElementById("tent");
-                        const canoeBtn = document.getElementById("canoe");
+                const tentBtn = document.getElementById("tent");
+                const canoeBtn = document.getElementById("canoe");
 
-                        view
-                        .when(function() {
-                            // This sample uses the SketchViewModel to add points to a
-                            // GraphicsLayer. The points have 3D glTF models as symbols.
-                            const sketchVMmodell = new SketchViewModel({
+                view
+                    .when(function () {
+                        // This sample uses the SketchViewModel to add points to a
+                        // GraphicsLayer. The points have 3D glTF models as symbols.
+                        const sketchVMmodell = new SketchViewModel({
                             layer: graphicsLayer2,
                             view: view
-                            });
+                        });
 
-                            tentBtn.addEventListener("click", function() {
+                        tentBtn.addEventListener("click", function () {
                             // reference the relative path to the glTF model
                             // in the resource of an ObjectSymbol3DLayer
                             sketchVMmodell.pointSymbol = {
                                 type: "point-3d",
                                 symbolLayers: [
-                                {
-                                    type: "object",
-                                    resource: {
-                                    href:
-                                        "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/tent.glb"
+                                    {
+                                        type: "object",
+                                        resource: {
+                                            href:
+                                                "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/tent.glb"
+                                        }
                                     }
-                                }
                                 ]
                             };
                             sketchVMmodell.create("point");
                             deactivateButtons();
                             this.classList.add("esri-button--secondary");
-                            });
+                        });
 
-                            canoeBtn.addEventListener("click", function() {
+                        canoeBtn.addEventListener("click", function () {
                             // reference the relative path to the glTF model
                             // in the resource of an ObjectSymbol3DLayer
                             sketchVMmodell.pointSymbol = {
                                 type: "point-3d",
                                 symbolLayers: [
-                                {
-                                    type: "object",
-                                    resource: {
-                                    href:
-                                        "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/canoe.glb"
+                                    {
+                                        type: "object",
+                                        resource: {
+                                            href:
+                                                "https://developers.arcgis.com/javascript/latest/sample-code/import-gltf/live/canoe.glb"
+                                        }
                                     }
-                                }
                                 ]
                             };
                             deactivateButtons();
                             sketchVMmodell.create("point");
                             this.classList.add("esri-button--secondary");
-                            });
+                        });
 
-                            sketchVMmodell.on("create", function(event) {
+                        sketchVMmodell.on("create", function (event) {
                             if (event.state === "complete") {
                                 sketchVMmodell.update(event.graphic);
                                 deactivateButtons();
                             }
-                            });
-                        })
-                        .catch(console.error);
-
-                        function deactivateButtons() {
-                        const elements = Array.prototype.slice.call(
-                            document.getElementsByClassName("esri-button")
-                        );
-                        elements.forEach(function(element) {
-                            element.classList.remove("esri-button--secondary");
                         });
+                    })
+                    .catch(console.error);
+
+                function deactivateButtons() {
+                    const elements = Array.prototype.slice.call(
+                        document.getElementsByClassName("esri-button")
+                    );
+                    elements.forEach(function (element) {
+                        element.classList.remove("esri-button--secondary");
+                    });
+                }
+
+                //view.ui.add("paneDiv", "top-right");
+
+
+                //--------------------------HitTest-------------------------------------------------------
+
+                // symbol for points on objects
+                let objectPointSymbol = {
+                    type: "point-3d",
+                    symbolLayers: [
+                        {
+                            type: "icon", // autocasts as new IconSymbol3DLayer()
+                            size: 12, // points
+                            resource: { primitive: "circle" },
+                            material: { color: "dodgerblue" },
+                            outline: {
+                                color: "deepskyblue"
+                            }
                         }
+                    ]
+                };
 
-                        //view.ui.add("paneDiv", "top-right");
-
-
-        //--------------------------HitTest-------------------------------------------------------
-
-                        // symbol for points on objects
-                        let objectPointSymbol = {
-                            type: "point-3d",
-                            symbolLayers: [
-                            {
-                                type: "icon", // autocasts as new IconSymbol3DLayer()
-                                size: 12, // points
-                                resource: { primitive: "circle" },
-                                material: { color: "dodgerblue" },
-                                outline: {
+                // symbol for first object hit point
+                let firstObjectPointSymbol = {
+                    type: "point-3d",
+                    symbolLayers: [
+                        {
+                            type: "icon", // autocasts as new IconSymbol3DLayer()
+                            size: 12, // points
+                            resource: { primitive: "circle" },
+                            material: { color: "darkblue" },
+                            outline: {
                                 color: "deepskyblue"
-                                }
                             }
-                            ]
-                        };
-                
-                        // symbol for first object hit point
-                        let firstObjectPointSymbol = {
-                            type: "point-3d",
-                            symbolLayers: [
-                            {
-                                type: "icon", // autocasts as new IconSymbol3DLayer()
-                                size: 12, // points
-                                resource: { primitive: "circle" },
-                                material: { color: "darkblue" },
-                                outline: {
-                                color: "deepskyblue"
-                                }
-                            }
-                            ]
-                        };
-                
-                        // symbol for the ground point
-                        const groundPointSymbol = {
-                            type: "point-3d",
-                            symbolLayers: [
-                            {
-                                type: "icon", // autocasts as new IconSymbol3DLayer()
-                                size: 12, // points
-                                resource: { primitive: "circle" },
-                                material: { color: "darkgreen" },
-                                outline: {
+                        }
+                    ]
+                };
+
+                // symbol for the ground point
+                const groundPointSymbol = {
+                    type: "point-3d",
+                    symbolLayers: [
+                        {
+                            type: "icon", // autocasts as new IconSymbol3DLayer()
+                            size: 12, // points
+                            resource: { primitive: "circle" },
+                            material: { color: "darkgreen" },
+                            outline: {
                                 color: "limegreen"
-                                }
                             }
-                            ]
-                        };
-                        // line symbol which connects the points
-                        const lineSymbol = {
-                            type: "line-3d", // autocasts as new LineSymbol3D()
-                            symbolLayers: [
-                            {
-                                type: "line", // autocasts as new LineSymbol3DLayer()
-                                material: {
+                        }
+                    ]
+                };
+                // line symbol which connects the points
+                const lineSymbol = {
+                    type: "line-3d", // autocasts as new LineSymbol3D()
+                    symbolLayers: [
+                        {
+                            type: "line", // autocasts as new LineSymbol3DLayer()
+                            material: {
                                 color: "dodgerblue"
-                                },
-                                size: 4
-                            }
-                            ]
-                        };
-                
-                        let highlightedList = [];
-                        const hitresultground = document.getElementById("hitresultground");
-                        const hitresultcount = document.getElementById("hitresultcount");
-                
-                        view.on("immediate-click", function(event) {
-                            // get the returned hitTestResult
-                            // and draw points on all return mappoints and connect to a line
-                            // (using promise chaining for cleaner code and error handling)
-                            view
-                            .hitTest(event, { exclude: [view.graphics] })
-                            .then(function(hitTestResult) {
-                                // print the information to the panel
-                                hitresultground.textContent =
+                            },
+                            size: 4
+                        }
+                    ]
+                };
+
+                let highlightedList = [];
+                const hitresultground = document.getElementById("hitresultground");
+                const hitresultcount = document.getElementById("hitresultcount");
+
+                view.on("immediate-click", function (event) {
+                    // get the returned hitTestResult
+                    // and draw points on all return mappoints and connect to a line
+                    // (using promise chaining for cleaner code and error handling)
+                    view
+                        .hitTest(event, { exclude: [view.graphics] })
+                        .then(function (hitTestResult) {
+                            // print the information to the panel
+                            hitresultground.textContent =
                                 Math.round(hitTestResult.ground.distance) + " m";
-                                hitresultcount.textContent = hitTestResult.results.length;
-                
-                                let lastHit = null;
-                                if (hitTestResult.results.length > 0) {
+                            hitresultcount.textContent = hitTestResult.results.length;
+
+                            let lastHit = null;
+                            if (hitTestResult.results.length > 0) {
                                 lastHit =
                                     hitTestResult.results[hitTestResult.results.length - 1];
                                 // create point graphic for each hit on objects
-                                hitTestResult.results.forEach(function(result, index) {
+                                hitTestResult.results.forEach(function (result, index) {
                                     const hitObject = new Graphic({
-                                    geometry: result.mapPoint,
-                                    symbol:
-                                        index === 0 ? firstObjectPointSymbol : objectPointSymbol
+                                        geometry: result.mapPoint,
+                                        symbol:
+                                            index === 0 ? firstObjectPointSymbol : objectPointSymbol
                                     });
                                     view.graphics.add(hitObject);
-                
+
                                     let graphic = result.graphic;
                                     // change the layer to be transparent
                                     graphic.layer.opacity = 0.8;
                                     // highlight the hit object
-                                    view.whenLayerView(graphic.layer).then(function(layerView) {
-                                    highlightedList.push(layerView.highlight(graphic));
+                                    view.whenLayerView(graphic.layer).then(function (layerView) {
+                                        highlightedList.push(layerView.highlight(graphic));
                                     });
                                 });
-                                }
-                
-                                if (hitTestResult.ground.mapPoint) {
+                            }
+
+                            if (hitTestResult.ground.mapPoint) {
                                 if (lastHit) {
                                     if (hitTestResult.ground.distance > lastHit.distance) {
-                                    // an object under the ground could be more far away,
-                                    // check first the distance before set the ground as last point
-                                    lastHit = hitTestResult.ground;
+                                        // an object under the ground could be more far away,
+                                        // check first the distance before set the ground as last point
+                                        lastHit = hitTestResult.ground;
                                     }
                                 } else {
                                     lastHit = hitTestResult.ground;
@@ -553,48 +566,48 @@
                                     symbol: groundPointSymbol
                                 });
                                 view.graphics.add(hitGround);
-                                }
-                
-                                if (lastHit) {
+                            }
+
+                            if (lastHit) {
                                 // Draw a line to connect all hit objects and ground
                                 let linePoints = [
                                     [
-                                    view.camera.position.x,
-                                    view.camera.position.y,
-                                    view.camera.position.z
+                                        view.camera.position.x,
+                                        view.camera.position.y,
+                                        view.camera.position.z
                                     ],
                                     [lastHit.mapPoint.x, lastHit.mapPoint.y, lastHit.mapPoint.z]
                                 ];
-                
+
                                 view.graphics.add({
                                     geometry: {
-                                    type: "polyline",
-                                    paths: linePoints,
-                                    spatialReference: view.spatialReference
+                                        type: "polyline",
+                                        paths: linePoints,
+                                        spatialReference: view.spatialReference
                                     },
-                
+
                                     symbol: lineSymbol
                                 });
-                                }
-                            })
-                            .catch(function(error) {
-                                console.error(error);
-                            });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error(error);
                         });
-                        document.getElementById("reset").addEventListener("click", function() {
-                            // remove all graphics
-                            view.graphics.removeAll();
-                            // remove the highlights
-                            highlightedList.forEach(function(highlightObject) {
-                            highlightObject.remove();
-                            });
-                            highlightedList = [];
-                            // disable the transparency
-                            view.map.layers.getItemAt(0).opacity = 1;
-                            // remove the result
-                            hitresultground.textContent = "0 m";
-                            hitresultcount.textContent = "-";
-                        });
+                });
+                document.getElementById("reset").addEventListener("click", function () {
+                    // remove all graphics
+                    view.graphics.removeAll();
+                    // remove the highlights
+                    highlightedList.forEach(function (highlightObject) {
+                        highlightObject.remove();
+                    });
+                    highlightedList = [];
+                    // disable the transparency
+                    view.map.layers.getItemAt(0).opacity = 1;
+                    // remove the result
+                    hitresultground.textContent = "0 m";
+                    hitresultcount.textContent = "-";
+                });
 
             });
     </script>
@@ -602,17 +615,17 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $('.first-button').on('click', function() {
+            $('.first-button').on('click', function () {
 
                 $('.animated-icon1').toggleClass('open');
             });
-            $('.second-button').on('click', function() {
+            $('.second-button').on('click', function () {
 
                 $('.animated-icon2').toggleClass('open');
             });
-            $('.third-button').on('click', function() {
+            $('.third-button').on('click', function () {
 
                 $('.animated-icon3').toggleClass('open');
             });
