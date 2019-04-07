@@ -343,3 +343,29 @@ table.esri-widget {
   font-size: 0.8rem;
   font-weight: 400;
 }
+
+.card_TBA {
+  position: relative;
+  width: 200px;
+  right: initial;
+  margin: inherit;
+  border: 3px solid #73ad21;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(236, 3, 3);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-img-top_TBA {
+  width: 100%;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
