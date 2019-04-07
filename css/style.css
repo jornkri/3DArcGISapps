@@ -8,7 +8,7 @@ body,
 }
 
 #paneDiv {
-    padding: 10px;
+    padding: 1px;
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 1.1em;
   }
@@ -29,16 +29,14 @@ body,
     border: 1px solid rgb(66, 27, 27) !important;
     color: #fff;
     cursor: pointer;
-    display: flex;
+    display: inline !important;
     font-family: inherit;
     font-size: 14px;
-    height: 32px;
     justify-content: center;
     overflow: hidden;
     padding: 0 7px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 25%;
 }
 .esri-widget {
     box-sizing: border-box;
@@ -54,7 +52,38 @@ body,
     color: #d269de;
 }
 
+table.esri-widget {
+    color: rgba(0, 0, 0) !important;
+    background-color: rgba(0, 0, 0, 0);
+}
 
+.custom-switch {
+    position: absolute;
+    left: 38px;
+    top: 200px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+}
+
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    color: aliceblue;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #ffffff00;
+}
 /* NavBar */
 
 .navbar {
@@ -87,7 +116,7 @@ body,
 }
 
 .red.lighten-1 {
-    background-color: #EBCB8B9c!important;
+    background-color: rgba(235, 203, 139, 0.808)!important;
 }
 
 .animated-icon1,
@@ -276,7 +305,7 @@ body,
 
 .card {
     position: relative;
-    width: 300px;
+    width: 200px;
     right: initial;
     margin: inherit;
     border: 3px solid #73AD21;
@@ -297,3 +326,19 @@ body,
     flex: 1 1 auto;
     padding: .5rem;
 }
+
+.card h1.card-title, .card h2.card-title, .card h3.card-title, .card h4.card-title, .card h5.card-title, .card h6.card-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.card-title {
+    margin-bottom: .4rem;
+}
+
+.card .card-body .card-text {
+    color: #747373;
+    font-size: .8rem;
+    font-weight: 400;
+}
+
