@@ -41,6 +41,7 @@
             $('body').bootstrapMaterialDesign();
         });
     </script> -->
+    <script src="https://js.arcgis.com/4.11/"></script>
 
 
 
@@ -50,7 +51,7 @@
 
 </head>
 
-<body onload="init();">
+<body >
 
     <!--Navbar-->
     <nav class="navbar navbar-dark red lighten-1 mb-4">
@@ -176,42 +177,46 @@
                                 <p class="card-text" align="center">Plasser punkt, linje eller polygoner direkte i
                                     3dScenen </p>
                                 <!-- Button -->
-                                <div id="infoDiv" class="esri-widget">
-                                    <b>Filter by geometry</b><br /><br />
-                                    Select the layers to filter on:<br />
-                                    <input id="sceneLayerViewFilter" type="checkbox" checked />
-                                    Buildings<br />
-                                    <input id="featureLayerViewFilter" type="checkbox" checked /> Trees<br />
-                                    <br />Draw a geometry to filter by:
-                                    <div class="geometry-options">
-                                        <button class="esri-widget--button esri-icon-map-pin geometry-button"
-                                            id="point-geometry-button" value="point" title="Filter by point"></button>
-                                        <button class="esri-widget--button esri-icon-polyline geometry-button"
-                                            id="line-geometry-button" value="polyline" title="Filter by line"></button>
-                                        <button class="esri-widget--button esri-icon-polygon geometry-button"
-                                            id="polygon-geometry-button" value="polygon"
-                                            title="Filter by polygon"></button>
-                                    </div>
-                                    <br />
-                                    <label for="relationship-select">Spatial relationship:</label>
-                                    <select id="relationship-select" class="options">
-                                        <option value="intersects">intersects</option>
-                                        <option value="contains">contains</option>
-                                        <option value="disjoint" selected>disjoint</option>
-                                    </select><br /><br />
-                                    <div class="tooltip">
-                                        <label for="bufferNum">Buffer geometry in meters:</label>
-                                        <span id="bufferValueNum">0</span> <br />
-                                        0<input id="bufferNum" type="range" min="0" max="1000" value="0"
-                                            tabindex="1" />1000
-                                    </div>
-                                    <br /><br />
-                                    <button class="esri-button" id="clearFilter" type="button">
-                                        Clear filter
-                                    </button>
-                                </div>
-                            </div>
+                                
+                            
+
                         </div>
+
+                        <div id="infoDiv" class="esri-widget">
+                            <b>Filter by geometry</b><br /><br />
+                            Select the layers to filter on:<br />
+                            <input id="sceneLayerViewFilter" type="checkbox" checked />
+                            Buildings<br />
+                            <input id="featureLayerViewFilter" type="checkbox" checked /> Trees<br />
+                            <br />Draw a geometry to filter by:
+                            <div class="geometry-options">
+                                <button class="esri-widget--button esri-icon-map-pin geometry-button"
+                                    id="point-geometry-button" value="point" title="Filter by point"></button>
+                                <button class="esri-widget--button esri-icon-polyline geometry-button"
+                                    id="line-geometry-button" value="polyline" title="Filter by line"></button>
+                                <button class="esri-widget--button esri-icon-polygon geometry-button"
+                                    id="polygon-geometry-button" value="polygon"
+                                    title="Filter by polygon"></button>
+                            </div>
+                            <br />
+                            <label for="relationship-select">Spatial relationship:</label>
+                            <select id="relationship-select" class="options">
+                                <option value="intersects">intersects</option>
+                                <option value="contains">contains</option>
+                                <option value="disjoint" selected>disjoint</option>
+                            </select><br /><br />
+                            <div class="tooltip">
+                                <label for="bufferNum">Buffer geometry in meters:</label>
+                                <span id="bufferValueNum">0</span> <br />
+                                0<input id="bufferNum" type="range" min="0" max="1000" value="0"
+                                    tabindex="1" />1000
+                            </div>
+                            <br /><br />
+                            <button class="esri-button" id="clearFilter" type="button">
+                                Clear filter
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card -->
@@ -243,7 +248,8 @@
     </div>
 
     <script>
-        require(["esri/Map",
+        require([
+            "esri/Map",
             "esri/WebScene",
             "esri/views/SceneView",
             "esri/Basemap",
@@ -316,6 +322,8 @@
                 // Adds the layer to the map once it loads
                 function addLayer(layer) {
                     map.add(layer);
+
+                    checkForBygninger();
                 }
 
                 function rejection(error) {
@@ -679,22 +687,19 @@
                 // create the layerView's to add the filter
                 let sceneLayerView = null;
                 let featureLayerView = null;
-                view.map.load().then(function () {
-                    // loop through webmap's operational layers
-                    view.map.layers.forEach(function (layer, index) {
-                        view
-                            .whenLayerView(layer)
-                            .then(function (layerView) {
-                                if (layer.type === "feature") {
-                                    featureLayerView = layerView;
-                                }
-                                if (layer.type === "scene") {
-                                    sceneLayerView = layerView;
-                                }
-                            })
-                            .catch(console.error);
+                debugger;
+
+                function checkForBygninger() {
+                    view.when(function () {
+                        // loop through webmap's operational layers
+                        view.layerViews.forEach(function (layerView, index) {
+                            if (layerView.type === "scene") {
+                                debugger;
+                                sceneLayerView = layerView;
+                            }
+                        });
                     });
-                });
+                }
 
                 // use SketchViewModel to draw polygons that are used as a filter
                 let sketchGeometry = null;
@@ -822,8 +827,10 @@
                     filterGeometry = null;
                     sketchLayer.removeAll();
                     bufferLayer.removeAll();
-                    sceneLayerView.filter = null;
-                    featureLayerView.filter = null;
+                    view.layerViews.forEach(function (layerView, index) {
+                        layerView.filter = null;
+                    });
+
                 }
 
                 // set the geometry filter on the visible FeatureLayerView
@@ -834,6 +841,17 @@
                         geometry: filterGeometry,
                         spatialRelationship: selectedFilter
                     };
+
+                    view.when(function () {
+                        // loop through webmap's operational layers
+                        view.layerViews.forEach(function (layerView, index) {
+                            layerView.filter = featureFilter;
+                            /*if (layerView.type === "scene") {
+                                debugger;
+                                sceneLayerView = layerView;
+                            }*/
+                        });
+                    });
 
                     if (featureLayerView) {
                         if (featureLayerViewFilterSelected) {
